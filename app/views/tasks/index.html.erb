@@ -1,0 +1,42 @@
+<div class ="container">
+ 
+<h4>Task</h4>
+
+
+  <!-- <tr>
+    <td>Title</td>
+     <td> &nbsp;</td>
+  
+   
+    <td>Description</td>
+      <td> &nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr> -->
+
+<%# @tasks.each do |task| %>
+  <!-- <div class="panel panel-default">
+    <div class="panel-heading">  <%= task.title%></div>
+    <div class= "panel-body"> <%= task.description%></div>
+    <div class="panel-body"> 
+      <%= task.status %>
+    </div>  
+  </div> -->  
+<%# end %>
+<% @tasks.each do |task| %>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><%= task.title%></div>
+
+  <!-- Table -->
+  <table class="table">
+  <tr><%= task.description%></tr>
+  <tr><%= task.status %></tr>
+  </table>
+</div>
+<% end %>
+</div>
+<br />
+
+<%#= link_to 'New Post', new_post_path %>

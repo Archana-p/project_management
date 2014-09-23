@@ -1,0 +1,67 @@
+<div class = "text-center">
+  <%content_for :breadcrumb do %>
+    <ul class="breadcrumb">
+    <li><%= link_to "Home" , homes_path%></li>
+    <li><%= link_to "Project List" %></li>
+   
+   </ul>
+  <%end%>
+<h1>Projects</h1>
+</div>
+<div class = "container">
+  <div class ="text-right">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#project_model " id = "new_project">
+          Create project
+        </button>
+    <%#= link_to "Create Project" , new_project_path%>
+  </div>
+
+  <!-- <tr>
+    <td>Title</td>
+     <td> &nbsp;</td>
+  
+   
+    <td>Description</td>
+      <td> &nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr> -->
+<%= form_tag projects_path, :method => 'get' do %>
+   
+    <div class="form-group  col-xs-2">
+    <%= text_field_tag :search, params[:search] ,:placeholder=>"Enter Project title"%>
+  </div>
+  
+    <%= submit_tag "Search", :name => nil ,:class => "btn btn-default"%>
+  
+<% end %>
+
+
+<% @projects.each do |project| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">  
+    <%=  link_to project.title ,project_path(project)%>
+    <div class = "text-right">
+    <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe , project_path(project) ,:method => "delete"%> 
+    </div>
+    </div>
+
+    <div class="panel-body">
+      <%= project.description.truncate(200) %>
+    </div>  
+  </div>  
+<% end %>
+
+<%= render :partial=> "project_model" %>
+
+</div>
+<br />
+
+<%#= link_to 'New Post', new_post_path %>
+<style type='text/css'>
+  .modal .modal-body {
+    max-height: 500px;
+    overflow-y: auto;
+}
+</style>

@@ -1,0 +1,43 @@
+
+<%= nested_form_for @project , html: { class: "form-horizontal" , :multipart => true} do |f| %>
+
+    <div class="form-group text-center">
+      <label for="inputtitle" class="col-sm-2 control-label">Title</label>
+      <div class="col-sm-6">
+      	<%=  f.text_field :title , class: "form-control" ,id: "inputtitle"%>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <label for="inputdescription" class="col-sm-2 control-label">Description</label>
+      <div class="col-sm-6">
+      	<%=  f.text_area :description , class: "form-control" ,id: "inputdescription",:rows => "10"%>
+      </div>
+    </div>
+ 
+<!--  -->
+    <div class="form-group ">
+      <label for="inputdescription" class="col-sm-2 control-label">Admin User</label>
+      <div class="col-sm-6">
+      <%= select_tag "project_admin", options_from_collection_for_select(@users, "id", "name") %>
+      </div>
+    </div>
+    <div class="form-group ">
+      <label for="inputteam" class="col-sm-2 control-label">Project Team</label>
+        <div class="col-sm-6">
+        <% @users.each do |user|%>
+          <%= hidden_field_tag "project[user_ids][]",nil%>
+        <%= check_box_tag("project[user_ids][]", user.id,@project.user_ids.include?(user.id),id: dom_id(user) )%>
+        <%= label_tag dom_id(user) ,user.name%>
+        <%end%>
+        </div>
+    </div>
+ <div class = "form-group ">
+    <div class="col-sm-offset-2 col-sm-6">
+      <% unless @project.new_record?%>
+        
+     
+        <%= f.submit "Update project" , :class =>"btn btn-default" %>
+     <%end%>
+  </div>
+  <%= link_to 'Back', projects_path %>
+ <%end %>
