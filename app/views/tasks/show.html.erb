@@ -1,40 +1,35 @@
 <div class = "text-center">
-   <%content_for :breadcrumb do %>
+  <%content_for :breadcrumb do %>
     <ul class="breadcrumb">
-    <li><%= link_to "Home" , homes_path%></li>
-    <li><%= link_to "Project List" ,projects_path%></li>
-    <li><%= link_to @project.title ,project_path(@project)%></li>
-    <li><%= link_to @task.title %></li>
-   </ul>
+      <li><%= link_to "Home" , homes_path%></li>
+      <li><%= link_to "Project List" ,projects_path%></li>
+      <li><%= link_to @project.title ,project_path(@project)%></li>
+      <li><%= link_to @task.title %></li>
+    </ul>
   <%end%>
-<h1>Task</h1>
+  <h1>Task</h1>
 </div>
+
 <div class = "container">
 
   <div class = "text-right">
-      Project  = <%= @task.project.title%></div>
-
-
-<div class="panel panel-default">
+    Project  = <%= @task.project.title%>
+  </div>
+  <div class="panel panel-default">
     <div class="panel-heading">  <%= @task.title%>
-      <div class = "text-right"><button type="button" class="btn btn-default"><%= link_to "Edit"  , edit_project_task_path(@project)%></button></div>
+      <div class = "text-right"><button type="button" class="btn btn-default"><%= link_to "Edit"  , edit_project_task_path(@project)%></button>
+      </div>
     </div>
       <%#= link_to "Delete", project_path , :method => "Delete" %>
       <%#= link_to "Create Task" , new_project_task_path(@project)%>
-    	
     <div class="panel-body">
       <%= @task.description %>
-      
       Task Owner: <%= @task.task_owner.name if @task.task_owner.present? %></div>
-      
     </div>  
   </div> 
- <%= render :partial => "list" ,:locals => {:show_delete => false}%>
- 
+  <%= render :partial => "list" ,:locals => {:show_delete => false}%>
+  <button type="button" class="btn btn-default"><%= link_to 'Back', project_path(@project) %>
+  </button>
 
-  
-        <button type="button" class="btn btn-default"><%= link_to 'Back', project_path(@project) %>
-        </button>
-  
-   
+
 </div>

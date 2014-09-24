@@ -1,58 +1,44 @@
-
 <div class = "text-center">
   <%content_for :breadcrumb do %>
     <ul class="breadcrumb">
-    <li><%= link_to "Home" , homes_path%></li>
-    <li><%= link_to "Project List",projects_path %></li>
-    <li><%= link_to @project.title %></li>
-   </ul>
+      <li><%= link_to "Home" , homes_path%></li>
+      <li><%= link_to "Project List",projects_path %></li>
+      <li><%= link_to @project.title %></li>
+    </ul>
   <%end%>
-<h1>Project</h1>
+  <h1>Project</h1>
 </div>
 <div class = "container">
-
-  
-
-
-<div class="panel panel-default">
-    <div class="panel-heading">  <%= @project.title%>
-      
-    
-      
-      
-    	<div class = "text-right">
-         Project Owner: <%= @project.project_owner.name%>
-         <% if @project.project_owner.id == current_user.id%>
+  <div class="panel panel-default">
+    <div class="panel-heading">  <%= @project.title%>   
+      <div class = "text-right">
+        Project Owner: <%= @project.project_owner.name%>
+        <% if @project.project_owner.id == current_user.id%>
+          <div class="btn-group btn-group-sm" >
+            <button type="button" class="btn btn-default"><%= link_to "Edit"  , edit_project_path(@project)%></button>
+            <button type="button" class="btn btn-default"><%= link_to "Delete", project_path(@project) , :method => "Delete" %></button>
+          </div>
+        <%end%>
         <div class="btn-group btn-group-sm" >
-        <button type="button" class="btn btn-default"><%= link_to "Edit"  , edit_project_path(@project)%></button>
-        <button type="button" class="btn btn-default"><%= link_to "Delete", project_path(@project) , :method => "Delete" %></button>
-        
-       </div>
-
-       <%end%>
-       <div class="btn-group btn-group-sm" >
-       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal " id = "create_task">
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal " id = "create_task">
           Create Task
-        </button>
-     </div>
-     </div>
-     
-     </div>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="panel-body">
       <%= @project.description %>
       <div class="panel-body">
-      Project Member: <%= @team_members%>
-
+        Project Member: <%= @team_members%>
       </div>
     </div>  
   </div>  
 </div>
 <%= render partial: 'project_tasks' %>
 <%= render :partial=> "tasks/model" %>
-
 <style type='text/css'>
   .modal .modal-body {
-    max-height: 420px;
-    overflow-y: auto;
-}
+  max-height: 420px;
+  overflow-y: auto;
+  }
 </style>

@@ -4,6 +4,6 @@ class AttachmentsController < ApplicationController
 		@task = Task.find(params[:task_id])
     @attachment = Attachment.find(params[:id])
     @attachment.destroy
-   redirect_to edit_project_task_path(@project,@task) , :notice => "Destroy successfully"
+    redirect_to edit_project_task_path(@project,@task) , :notice => "Destroy successfully"
 	end 
 end

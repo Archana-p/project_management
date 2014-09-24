@@ -1,65 +1,45 @@
 <div class ="container">
-<h4>Task</h4>
+  <h4>Task</h4>
 
-
-  <!-- <tr>
-    <td>Title</td>
-     <td> &nbsp;</td>
-  
-   
-    <td>Description</td>
-      <td> &nbsp;</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr> -->
- <div class="row">
-  
-  <%= form_tag project_path(@project), :method => 'get' do %>
-    <div class="form-group   col-xs-2">
-    <%= text_field_tag :title, params[:title],:placeholder=>"Enter Task title" %></div>
-     <div class="form-group   col-xs-2">
-    <%= select_tag :status, options_for_select([['Not Started','not_started'],['Started','started'],['Done','done']]),prompt: "Not Selected" , :class =>"form-control" %>
+  <div class="row">
+    <%= form_tag project_path(@project), :method => 'get' do %>
+      <div class="form-group   col-xs-2">
+        <%= text_field_tag :title, params[:title],:placeholder=>"Enter Task title" %>
+      </div>
+      <div class="form-group   col-xs-2">
+        <%= select_tag :status, options_for_select([['Not Started','not_started'],['Started','started'],['Done','done']]),prompt: "Not Selected" , :class =>"form-control" %>
+      </div>
+      <%= submit_tag "Search", :class => "btn btn-default"%>
+      <%= link_to "Download CSV", project_path(format: "csv") %>
+    <% end %>
   </div>
- <%= submit_tag "Search", :class => "btn btn-default"%>
- <%= link_to "Download CSV", project_path(format: "csv") %>
-<% end %>
-</div>
- <div class="row">
-
-<%= form_tag update_tasks_project_path(@project), :method => 'put' do %>
-   
+  <div class="row">
+    <%= form_tag update_tasks_project_path(@project), :method => 'put' do %>
       <div class="form-group   col-xs-2 text-right">
         <%= select_tag :check_status, options_for_select([['Not Started','not_started'],['Started','started'],['Done','done']]),prompt: "Not Selected" , :class =>"form-control" %>
       </div>
       <%= submit_tag "Submit",:class => "btn btn-default  submit"%>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-           <th><%= check_box_tag(:all)%> </th>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><%= check_box_tag(:all)%> </th>
             <th>Title</th>
             <th>Description</th>
             <th>Status</th>
             <th>Task Member</th>
-            
             <th>Delete / Edit</th>
-            
-        </tr>
-    </thead>
-    <%# if @tasks.present?%>
-      <% @tasks.each  do |task| %>
-
-        <tbody>
-         <%= render partial: 'tasks/task',:locals => {:task => task , :project => @project} %>
-        </tbody>
-      
-      <% end %>
-     <%#end%> 
-
-</table>
-<% end %>
-</div>
+          </tr>
+        </thead>
+        <%# if @tasks.present?%>
+        <% @tasks.each  do |task| %>
+          <tbody>
+            <%= render partial: 'tasks/task',:locals => {:task => task , :project => @project} %>
+          </tbody>
+        <% end %>
+          <%#end%> 
+      </table>
+    <% end %>
+  </div>
 </div>
 <br />
 

@@ -2,25 +2,22 @@ class UserMailer < ActionMailer::Base
   default from: "archana@gmail.com"
 
   def project_creation(user , project)
-  	@project = project
-  	mail(:to => user.email , :subject => "Registered")
-
+    @project = project
+    mail(:to => user.email , :subject => "Registered")
   end
   
   def project_deletion(email , title)
-  	@title=title
-  	mail(:to => email , :subject => "Project Destroy")
+    @title=title
+    mail(:to => email , :subject => "Project Destroy")
   end
-  
-   def task_creation(user , task)
-  	@task = task
-  	mail(:to => user.email , :subject => "Registered")
-
+    
+  def task_creation(user , task)
+    @task = task
+    mail(:to => user.email , :subject => "Registered")
   end
- 
- def task_deletion(email , title)
-  	@title=title
-  	mail(:to => email , :subject => "Task Destroy")
-
+   
+  def task_deletion(email , title)
+    @title=title
+    mail(:to => email , :subject => "Task Destroy")
   end
 end
