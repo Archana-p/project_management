@@ -8,7 +8,7 @@
           <span aria-hidden="true">&times;</span>
           <span class="sr-only">Close</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"><%= @project.title.capitalize%></h4>
       </div>
       <div class="modal-body modal-lg">
         <%= render partial: 'tasks/form',locals: {show_delete: true} %>

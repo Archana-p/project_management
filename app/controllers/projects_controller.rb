@@ -23,12 +23,29 @@ class ProjectsController < ApplicationController
     if @project.save 
       @team_members.each do |team_member|
         UserMailer.project_creation(team_member,@project).deliver
+
       end
-      redirect_to projects_path , :notice => "Save successfully"
+       respond_to do |format|
+          format.html {
+             redirect_to projects_path , :notice => "Save successfully"
+           }
+
+           format.js{
+            render json: { success: true,message: "Saved successfully"}
+           }
+        end
+     
     else
       @users = User.all
       flash[:alert] = @project.errors.full_messages.collect(&:humanize).join(", ") 
-      redirect_to projects_path
+      respond_to do |format|
+        format.html {
+          redirect_to projects_path
+        }
+        format.js {
+          render json: { success: false,message: " Not Saved successfully", errors: @project.errors.full_messages.collect(&:humanize).join(", ") }
+        }
+      end 
     end
   end
 

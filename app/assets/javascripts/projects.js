@@ -19,12 +19,43 @@ $(document).ready(function(){
 			{e.preventDefault();}
   });
   
-  $("#save_task").click(function(){ 
-    $("form#new_task").submit() 
+  $("#save_project").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+      type : "post" ,
+      url : $("#new_project").attr("action"),
+      data : $("#new_project").serialize(),
+      dataType : "json"
+    }).done(function( response ) {
+      if(response.success == true)
+      {
+        $("#project_model").modal("hide")
+         window.location.reload()
+      }
+      else
+        $(".task_error_message").html(response.errors)
+
+    });
   });
 
-  $("#save_project").click(function(){ 
-    $("form#new_project").submit() 
+
+  $("#save_task").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+      type : "post" ,
+      url : $("#new_task").attr("action"),
+      data : $("#new_task").serialize(),
+      dataType : "json"
+    }).done(function( response ) {
+      if(response.success == true)
+      {
+        $("#myModal").modal("hide")
+         window.location.reload()
+      }
+      else
+        $(".task_error_message").html(response.errors)
+
+    });
   });
 
 });

@@ -11,7 +11,9 @@ ProjectManagement::Application.routes.draw do
   end
    get "tasks/mytasks"
  #match "/tasks/mytask" => "tasks#mytask"  ,:as => "mytask"
+ get "homes/test_ajax"
  resources  :homes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
