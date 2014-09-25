@@ -34,6 +34,19 @@
       <div class="panel-body">
         <%= project.description.truncate(200) %>
       </div>  
+      <div class="panel-footer">
+       Tasks :
+
+        <span class="label label-success">
+          Done :<%= project.task_count("done") %>
+        </span>
+        <span class="label label-default">
+          Not Started: <%= project.task_count("not_started") %>
+        </span>
+        <span class="label label-primary">
+          Started:<%= project.task_count("started") %>
+        </span>
+      </div>  
     </div>  
   <% end %>
 

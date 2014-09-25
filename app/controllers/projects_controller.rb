@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @users = User.all
     @projects = Project.search(params[:search],current_user)
+     
   end
 
   def new

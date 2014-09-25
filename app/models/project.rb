@@ -18,6 +18,13 @@ class Project < ActiveRecord::Base
 			current_user.projects
 		end
 	end
+  
+
+  def task_count(status)
+     if status.present?
+			count_tasks = tasks.where("status = ?", status).count()
+		end
+  end
 
 	def search_task(params)
 	  if params[:title].present?

@@ -44,7 +44,11 @@
                         <%= link_to task.title , project_task_path(task.project_id , task)%> 
                     </td>
                     <td> <%= task.description%></td>
-                    <td><%= task.formatted_status %></td>
+                    <td>
+                        <span class="label  <%= class_for_task_label(task.status)%>"> 
+                            <%= task.formatted_status %>
+                        </span>
+                    </td>
 
                     <td><%=task.task_owner.name if task.task_owner.present? %></td>
                     <td><%= task.project.title%></td>
