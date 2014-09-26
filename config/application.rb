@@ -3,6 +3,15 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 #require 'csv'
 
+# Root User: admin3sttL5M
+#    Root Password: l3Vt3c3jSDCh
+#    Database Name: management
+ # host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+ #  port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+ #  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
+ #  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
+ #  socket: <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+ 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
