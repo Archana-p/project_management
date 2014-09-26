@@ -22,9 +22,11 @@ class ProjectsController < ApplicationController
     @team_members=  @project.users
 
     if @project.save 
-      @team_members.each do |team_member|
-        UserMailer.project_creation(team_member,@project).deliver
+      if Rails.env != "production"
+        @team_members.each do |team_member|
+          UserMailer.project_creation(team_member,@project).deliver
 
+        end
       end
        respond_to do |format|
           format.html {
@@ -74,8 +76,10 @@ class ProjectsController < ApplicationController
     title = @project.title
 
     if @project.destroy
-      team_members.each do |team_member|
-        UserMailer.project_deletion(team_member,title).deliver
+      if Rails.env != "producation"
+        team_members.each do |team_member|
+          UserMailer.project_deletion(team_member,title).deliver
+        end
       end
       redirect_to projects_path ,:notice => "Destroy successfully"#redirect to show page ifproject delete 
     end
