@@ -10,7 +10,7 @@
 
 <div class = "container">
   <div class ="text-right">
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#project_model " id = "new_project">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#project_model " id = "create_project">
     Create project
     </button>
   <%#= link_to "Create Project" , new_project_path%>
@@ -27,8 +27,8 @@
     <div class="panel panel-default">
       <div class="panel-heading">  
         <%=  link_to project.title ,project_path(project)%>
-        <div class = "text-right">
-          <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe , project_path(project) ,:method => "delete"%> 
+        <div class = "text-right" style = "display: inline;float: right;">
+          <%= link_to "<span class='glyphicon glyphicon-remove  btn btn-danger btn-xs'></span>".html_safe , project_path(project) ,:method => "delete" , :confirm => "Are you sure?"%> 
         </div>
       </div>
       <div class="panel-body">
@@ -38,14 +38,14 @@
        Tasks :
 
         <span class="label label-success">
-          Done :<%= project.task_count("done") %>
-        </span>
+          <%= link_to "Done : #{project.task_count('done')}" , project_path(project , :status => 'done'), style: "color:white" %>
+        </span>&nbsp;
         <span class="label label-default">
-          Not Started: <%= project.task_count("not_started") %>
-        </span>
+           <%= link_to "Not Started: #{project.task_count('not_started')}",project_path(project , :status => 'not_started'),style: "color:white" %>
+        </span>&nbsp;
         <span class="label label-primary">
-          Started:<%= project.task_count("started") %>
-        </span>
+         <%= link_to " Started: #{project.task_count('started')}" ,project_path(project , :status => 'started'),style: "color:white" %>
+        </span>&nbsp;
       </div>  
     </div>  
   <% end %>

@@ -32,9 +32,9 @@ class Project < ActiveRecord::Base
 		end
 
 		if params[:status].present? && project_tasks.present?
-			project_tasks.where('status LIKE ?', "%#{params[:status]}%")
+			project_tasks.where('status LIKE ?', "#{params[:status]}")
 		elsif params[:status].present?
-			tasks.where('status LIKE ?', "%#{params[:status]}%")
+			tasks.where('status LIKE ?', "#{params[:status]}")
 		end
   end
 end

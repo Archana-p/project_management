@@ -6,14 +6,16 @@
   <div class="form-group">
     <label for="inputtitle" class="col-sm-2  control-label">Title</label>
     <div class="col-sm-6">
-      <%=  f.text_field :title , class: "form-control" ,id: "inputtitle"%>
+      <%=  f.text_field :title , class: "form-control" ,id: "inputtitle",'data-class'=> 'title'%>
+      <span class='error_message'></span>
     </div>
   </div>
 
   <div class="form-group ">
     <label for="inputdescriptioin" class="col-sm-2 control-label">Description</label>
     <div class="col-sm-6">
-      <%=  f.text_field :description , class: "form-control" ,id: "inputdescription"%>
+      <%=  f.text_field :description , class: "form-control" ,id: "inputdescription" , 'data-class' => 'description'%>
+      <span class='error_message'></span>
     </div>
   </div>
 
@@ -55,3 +57,13 @@
     </div>
   </div>
 <%end%>
+<style type='text/css'>
+  span.error_message {
+    font-size: 10px;
+    float: right;
+    color: red;
+  }
+  .errors{
+    border: 1px solid red;
+  }
+</style>

@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 					redirect_to project_path(@project)
 				}
 				format.js {
-					render json: { success: false,message: " Not Saved successfully", errors: @task.errors.full_messages.collect(&:humanize).join(", ")}
+					render json: { success: false,message: " Not Saved successfully", errors: @task.errors}
 				}
 			end
 			

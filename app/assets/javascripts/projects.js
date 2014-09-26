@@ -33,8 +33,11 @@ $(document).ready(function(){
          window.location.reload()
       }
       else
-        $(".task_error_message").html(response.errors)
-
+        $.each( response.errors,function(element,value){ 
+          var data_attr = '[data-class='+element+']'; 
+          $(data_attr).addClass("errors").siblings('span').html(value.join());
+        });
+        //$(".task_error_message").html(response.errors)
     });
   });
 
@@ -53,9 +56,25 @@ $(document).ready(function(){
          window.location.reload()
       }
       else
-        $(".task_error_message").html(response.errors)
-
+        
+        //$(".task_error_message").html(response.errors)
+      $.each( response.errors,function(element,value){ 
+          var data_attr = '[data-class='+element+']'; 
+          $(data_attr).addClass("errors").siblings('span').html(value.join());
+        });
+        //$("
     });
   });
+
+  $('#project_model').on('hidden.bs.modal', function (e) {
+    $(".errors").removeClass("errors");
+    $("span.error_message").html("");
+  })
+
+
+  $('#myModal').on('hidden.bs.modal', function (e) {
+    $(".errors").removeClass("errors");
+    $("span.error_message").html("");
+  })
 
 });

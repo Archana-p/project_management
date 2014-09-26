@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @users = User.all
     @projects = Project.search(params[:search],current_user)
-     
+
   end
 
   def new
@@ -38,13 +38,13 @@ class ProjectsController < ApplicationController
      
     else
       @users = User.all
-      flash[:alert] = @project.errors.full_messages.collect(&:humanize).join(", ") 
+     # flash[:alert] = @project.errors.full_messages.collect(&:humanize).join(", ") 
       respond_to do |format|
         format.html {
           redirect_to projects_path
         }
         format.js {
-          render json: { success: false,message: " Not Saved successfully", errors: @project.errors.full_messages.collect(&:humanize).join(", ") }
+          render json: { success: false,message: "Please correct the following errors", errors: @project.errors }
         }
       end 
     end
@@ -57,6 +57,7 @@ class ProjectsController < ApplicationController
 
     #binding.pry
     @tasks  = @project.search_task(params) || @project.tasks
+
     @task = Task.new
     respond_to do |format|
       format.html
