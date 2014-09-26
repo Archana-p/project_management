@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
     title = @project.title
 
     if @project.destroy
-      if Rails.env != "producation"
+      if Rails.env != "production"
         team_members.each do |team_member|
           UserMailer.project_deletion(team_member,title).deliver
         end
