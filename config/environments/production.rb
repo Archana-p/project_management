@@ -35,7 +35,7 @@ ProjectManagement::Application.configure do
 
 
   config.action_mailer.default_url_options = { :host => 'management-projecttask.rhcloud.com' }
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
 
