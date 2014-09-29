@@ -34,7 +34,8 @@ ProjectManagement::Application.configure do
   config.log_level = :debug
 
 
-    config.action_mailer.default_url_options = { :host => 'management-projecttask.rhcloud.com' }
+  config.action_mailer.default_url_options = { :host => 'management-projecttask.rhcloud.com' }
+  config.action_mailer.delivery_method = :sendmail
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
 

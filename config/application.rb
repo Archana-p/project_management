@@ -11,13 +11,14 @@ require 'rails/all'
  #  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
  #  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
  #  socket: <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
- 
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+
 
 module ProjectManagement
   class Application < Rails::Application
