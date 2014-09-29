@@ -1,4 +1,8 @@
 ---
+chosen-sprite.png: chosen-sprite-f05a2f84543b60ecaa4f5756d900a204.png
+chosen-sprite/index.png: chosen-sprite-f05a2f84543b60ecaa4f5756d900a204.png
+chosen-sprite@2x.png: chosen-sprite@2x-c449578b6350e6b0e9f36f3781b31e37.png
+chosen-sprite@2x/index.png: chosen-sprite@2x-c449578b6350e6b0e9f36f3781b31e37.png
 glyphicons-halflings-regular.eot: glyphicons-halflings-regular-34c3e2fce2eed3de1bb998bae0e4e0de.eot
 glyphicons-halflings-regular/index.eot: glyphicons-halflings-regular-34c3e2fce2eed3de1bb998bae0e4e0de.eot
 glyphicons-halflings-regular.svg: glyphicons-halflings-regular-a20f1f0c23f592f30c37f1b6ce7dac09.svg
@@ -9,10 +13,10 @@ glyphicons-halflings-regular.woff: glyphicons-halflings-regular-26a4cf908d46a313
 glyphicons-halflings-regular/index.woff: glyphicons-halflings-regular-26a4cf908d46a31304c50b30b5696da5.woff
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-976a9ea0ec9db1df29c1e2f1d5c90e3d.js
-application/index.js: application-976a9ea0ec9db1df29c1e2f1d5c90e3d.js
-application.css: application-adc3ad939a0bc88d9af33b34cd1c6d10.css
-application/index.css: application-adc3ad939a0bc88d9af33b34cd1c6d10.css
+application.js: application-b7f1fd78943b584e262643376bfa216a.js
+application/index.js: application-b7f1fd78943b584e262643376bfa216a.js
+application.css: application-09a343a248c4dac27a0d96673077ae8a.css
+application/index.css: application-09a343a248c4dac27a0d96673077ae8a.css
 fonts/glyphicons-halflings-regular.eot: fonts/glyphicons-halflings-regular-34c3e2fce2eed3de1bb998bae0e4e0de.eot
 fonts/glyphicons-halflings-regular/index.eot: fonts/glyphicons-halflings-regular-34c3e2fce2eed3de1bb998bae0e4e0de.eot
 fonts/glyphicons-halflings-regular.svg: fonts/glyphicons-halflings-regular-a20f1f0c23f592f30c37f1b6ce7dac09.svg

@@ -77,4 +77,10 @@ $(document).ready(function(){
     $("span.error_message").html("");
   })
 
+   $('.chosen-select').chosen({ 
+    width: '200px'});
+      
+  
+    
+
 });

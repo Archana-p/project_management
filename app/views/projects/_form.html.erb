@@ -26,11 +26,17 @@
   <div class="form-group ">
     <label for="inputteam" class="col-sm-2 control-label">Project Team</label>
     <div class="col-sm-6">
-      <% @users.each do |user|%>
-        <%= hidden_field_tag "project[user_ids][]",nil%>
-        <%= check_box_tag("project[user_ids][]", user.id,@project.user_ids.include?(user.id),id: dom_id(user) )%>
-        <%= label_tag dom_id(user) ,user.name%>
-      <%end%>
+     
+        <%#= hidden_field_tag "project[user_ids][]",nil%>
+        <%#= check_box_tag("project[user_ids][]", user.id,@project.user_ids.include?(user.id),id: dom_id(user) )%>
+        <%#= label_tag dom_id(user) ,user.name%>
+        <%#= select_tag "project[user_ids][]",options_from_collection_for_select(@people, "id", "name"),
+          User.all.map { |u| [u.name, u.id] },
+          { include_blank: true },
+          { class: 'chosen-select' }
+        %>
+         <%= f.collection_select "user_ids", User.all, :id, :name, { :include_blank =>true },{:class => 'chosen-select' , :multiple => true , style: "width: 200px"} %>
+     
     </div>
   </div>
 
