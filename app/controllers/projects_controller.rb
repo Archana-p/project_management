@@ -22,12 +22,11 @@ class ProjectsController < ApplicationController
     @team_members=  @project.users
 
     if @project.save 
-      if Rails.env != "production"
         @team_members.each do |team_member|
           UserMailer.project_creation(team_member,@project).deliver
 
         end
-      end
+      
        respond_to do |format|
           format.html {
              redirect_to projects_path , :notice => "Save successfully"
@@ -36,8 +35,7 @@ class ProjectsController < ApplicationController
            format.js{
             render json: { success: true,message: "Saved successfully"}
            }
-        end
-     
+        end 
     else
       @users = User.all
      # flash[:alert] = @project.errors.full_messages.collect(&:humanize).join(", ") 
@@ -76,11 +74,10 @@ class ProjectsController < ApplicationController
     title = @project.title
 
     if @project.destroy
-      if Rails.env != "production"
-        team_members.each do |team_member|
-          UserMailer.project_deletion(team_member,title).deliver
-        end
+     team_members.each do |team_member|
+        UserMailer.project_deletion(team_member,title).deliver
       end
+     
       redirect_to projects_path ,:notice => "Destroy successfully"#redirect to show page ifproject delete 
     end
   end 

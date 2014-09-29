@@ -30,14 +30,12 @@
     </ul>
     <%if user_signed_in? %>
       <ul class ="nav navbar-nav">
-        <li class = "active"><%= link_to "log out" ,destroy_user_session_path,:method => "delete"  %> 
+        <li class = "active"><%= link_to "Project List" ,projects_path(@project) %> 
         </li>
-      </ul>
-      <ul class ="nav navbar-nav">
-        <li class = "active"><%= link_to "Project List" ,projects_path(@project)  %> </li>
-      </ul>
-      <ul class ="nav navbar-nav">
         <li class = "active"><%= link_to "My task" ,tasks_mytasks_path  %> </li>
+        <li class = "active text-right">
+           <%= link_to "log out" ,destroy_user_session_path,:method => "delete"  %> 
+         </li>
       </ul>
       <div class = "text-right "style = "padding-top: 16px;display: inline;float: right;">
         Current User is :<%= current_user.name %> 

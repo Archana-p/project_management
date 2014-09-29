@@ -14,9 +14,8 @@ class TasksController < ApplicationController
 		@task = @project.tasks.new(params[:task])
 
 		if @task.save 
-			if Rails.env != "production"
 				UserMailer.task_creation(@task.task_owner,@task).deliver
-			end
+			
 			respond_to do |format|
 				format.html {
 					redirect_to project_path(@project) ,:notice => "Saved successfully"
@@ -58,9 +57,8 @@ class TasksController < ApplicationController
 		task_owner=  @task.task_owner
 		title = @task.title
 		if @task.destroy 
-		  if Rails.env !="production"   	 	
-				UserMailer.task_deletion(task_owner.email,title).deliver
-			end
+		  UserMailer.task_deletion(task_owner.email,title).deliver
+			
 			redirect_to project_path(@project) , :notice => "Destroy successfully"
 		end
 	end
