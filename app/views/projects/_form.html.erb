@@ -1,5 +1,5 @@
 <div class = "task_error_message"></div>
-<%= nested_form_for @project ,html: { class: "form-horizontal" ,:multipart => true} do |f|%>
+<%= nested_form_for @project ,html: { class: "form-horizontal  edit_project" ,:multipart => true} do |f|%>
   <div class="form-group text-center">
     <label for="inputtitle" class="col-sm-2 control-label">Title</label>
     <div class="col-sm-6">
@@ -37,14 +37,6 @@
         %>
          <%= f.collection_select "user_ids", User.all, :id, :name, { :include_blank =>true },{:class => 'chosen-select' , :multiple => true , style: "width: 200px"} %>
      
-    </div>
-  </div>
-
-  <div class = "form-group ">
-    <div class="col-sm-offset-2 col-sm-6">
-      <% unless @project.new_record?%>
-        <%= f.submit "Update project" , :class =>"btn btn-default" %>
-      <%end%>
     </div>
   </div>
   <%= link_to 'Back', projects_path %>

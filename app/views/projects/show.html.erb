@@ -15,7 +15,9 @@
         Project Owner: <%= @project.project_owner.name%>
         <% if @project.project_owner.id == current_user.id%>
           <div class="btn-group btn-group-sm" >
-            <button type="button" class="btn btn-default"><%= link_to "Edit"  , edit_project_path(@project)%></button>
+            <button type="button" class="btn btn-default" id = "edit_project" data-id = <%=@project.id%>> Edit
+              <%#= link_to "Edit"  , edit_project_path(@project)%></button>
+
             <button type="button" class="btn btn-default"><%= link_to "Delete", project_path(@project) , :method => "Delete" %></button>
           </div>
         <%end%>
@@ -33,6 +35,9 @@
       </div>
     </div>  
   </div>  
+</div>
+<div class="modal fade bs-example-modal-lg" id="project_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render :partial=> "project_model" %>
 </div>
 <%= render partial: 'project_tasks' %>
 <%= render :partial=> "tasks/model" %>

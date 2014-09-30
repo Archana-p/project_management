@@ -1,6 +1,10 @@
 ProjectManagement::Application.routes.draw do
   devise_for :users
   resources  :projects do
+    collection do
+      get "edit_action"
+    end
+
     resources  :tasks do
       resources :attachments
     end
@@ -12,6 +16,7 @@ ProjectManagement::Application.routes.draw do
    get "tasks/mytasks"
  #match "/tasks/mytask" => "tasks#mytask"  ,:as => "mytask"
  get "homes/test_ajax"
+
  resources  :homes
 
   # The priority is based upon order of creation:

@@ -85,6 +85,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     @users = User.all
+    
   end
 
   def update
@@ -92,11 +93,28 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.admin_id = params[:project_admin]
     if @project.update_attributes(params[:project])
-      redirect_to project_path , :notice => "Update successfully"
+       respond_to do |format|
+          format.html {
+             redirect_to project_path , :notice => "Update successfully"
+           }
+
+           format.js{
+            render json: { success: true,message: " Update successfully"}
+           }
+        end 
+      
     else
       @users = User.all
-      flash.now.alert = "Attributes are not updated successfully"
-      render('edit')
+      #flash.now.alert = "Attributes are not updated successfully"
+      respond_to do |format|
+        format.html {
+          redirect_to project_path
+        }
+        format.js {
+          render json: { success: false,message: "Please correct the following errors", errors: @project.errors }
+        }
+      end 
+    
     end
   end
 
@@ -115,5 +133,17 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     #binding.pry
     redirect_to homes_path unless @project.users.pluck(:id).include? current_user.id
+  end
+
+  def edit_action
+    @project = Project.find(params[:project_id])
+    @users = User.all
+    respond_to do |format|
+      #binding.pry
+      format.js{
+          
+          render json: { success: true,message: " Update successfully",:partial_string => render_to_string(:partial => "/projects/project_model")}
+        }
+    end  
   end
 end
