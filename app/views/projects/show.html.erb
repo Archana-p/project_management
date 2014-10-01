@@ -22,8 +22,8 @@
           </div>
         <%end%>
         <div class="btn-group btn-group-sm" >
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal " id = "create_task">
-          Create Task
+          <button type="button" class="btn btn-default">
+          <%= link_to "Create Task",new_project_task_path(@project)%>
           </button>
         </div>
       </div>
@@ -40,7 +40,7 @@
   <%= render :partial=> "project_model" %>
 </div>
 <%= render partial: 'project_tasks' %>
-<%= render :partial=> "tasks/model" %>
+
 <style type='text/css'>
   .modal .modal-body {
   max-height: 420px;

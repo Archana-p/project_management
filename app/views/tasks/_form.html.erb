@@ -6,16 +6,16 @@
   <div class="form-group">
     <label for="inputtitle" class="col-sm-2  control-label">Title</label>
     <div class="col-sm-6">
-      <%=  f.text_field :title , class: "form-control" ,id: "inputtitle",'data-class'=> 'title'%>
-      <span class='error_message'></span>
+      <%=  f.text_field :title , class: "form-control" ,id: "inputtitle"%>
+      
     </div>
   </div>
 
   <div class="form-group ">
     <label for="inputdescriptioin" class="col-sm-2 control-label">Description</label>
     <div class="col-sm-6">
-      <%=  f.text_field :description , class: "form-control" ,id: "inputdescription" , 'data-class' => 'description'%>
-      <span class='error_message'></span>
+      <%=  f.text_field :description , class: "form-control" ,id: "inputdescription"%>
+      
     </div>
   </div>
 
@@ -51,7 +51,9 @@
   <%= render :partial => "tasks/list",:locals => {:show_delete => show_delete} if show_delete.present?%>
   <div class = "form-group ">
     <div class="col-sm-offset-2 col-sm-6">
-      <% unless @task.new_record?%>
+      <% if @task.new_record?%>
+        <%= f.submit "Submit Task" , :class =>"btn btn-default" %>
+        <%else%>
         <%= f.submit "Update Task" , :class =>"btn btn-default" %>
       <%end%>
     </div>

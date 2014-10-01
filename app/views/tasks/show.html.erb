@@ -27,6 +27,7 @@
       Task Owner: <%= @task.task_owner.name if @task.task_owner.present? %></div>
     </div>  
   </div> 
+  
   <%= render :partial => "list" ,:locals => {:show_delete => false}%>
   <button type="button" class="btn btn-default"><%= link_to 'Back', project_path(@project) %>
   </button>

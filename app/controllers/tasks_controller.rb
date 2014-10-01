@@ -15,31 +15,13 @@ class TasksController < ApplicationController
 
 		if @task.save 
 				UserMailer.task_creation(@task.task_owner,@task).deliver
-			
-			respond_to do |format|
-				format.html {
-					redirect_to project_path(@project) ,:notice => "Saved successfully"
-				 }
-
-				 format.js{
-				 	render json: { success: true,message: "Saved successfully"}
-				 }
-        
-			end
-       
-			 
+			  redirect_to project_path(@project) ,:notice => "Saved successfully"
+		
 		else
-			flash.now.alert =  @task.errors.full_messages.collect(&:humanize).join(", ") 
+			flash.alert =  @task.errors.full_messages.collect(&:humanize).join(", ") 
 			@team_members =  @project.users
-			respond_to do |format|
-				format.html {
-					redirect_to project_path(@project)
-				}
-				format.js {
-					render json: { success: false,message: " Not Saved successfully", errors: @task.errors}
-				}
-			end
-			
+		  redirect_to project_path(@project)
+	
 		end
 	end
 
