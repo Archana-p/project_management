@@ -23,4 +23,13 @@ module ApplicationHelper
 			"label label-primary"
 		end
 	end
+
+
+	def add_breadcrumb
+		breadcrumb_html = "<li><a href=#{homes_path}> Home</a></li>"
+		breadcrumb_html += "<li><a href=#{projects_path}> Project List</a></li>" 
+    breadcrumb_html += "<li><a href=#{project_path(@project)}> #{@project.title}</a></li>" if @project.present? && !@project.new_record?
+    breadcrumb_html += "<li><a href=#{project_task_path(@task.project.id , @task.id)}> #{@task.title}</a></li>" if  @task.present? && !@task.new_record?
+		breadcrumb_html.html_safe
+	end
 end
