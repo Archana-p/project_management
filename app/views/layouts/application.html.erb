@@ -37,8 +37,8 @@
            <%= link_to "log out" ,destroy_user_session_path,:method => "delete"  %> 
          </li>
       </ul>
-      <div class = "text-right "style = "padding-top: 16px;display: inline;float: right;">
-        Current User is :<%= current_user.name %> 
+      <div class = "text-right "style = "padding-top: 16px;display: inline;float: right;" id ="show-msg">
+        <%= current_user.name %> <%= link_to "<span class='glyphicon glyphicon-cog' data-toggle='tooltip' data-placement='left' title='Edit Profile'></span>".html_safe ,edit_user_registration_path  %>
       </div>
     <%else%>
       <ul class="nav navbar-nav">

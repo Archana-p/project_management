@@ -1,7 +1,12 @@
 <h2>Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put ,class: "form-horizontal" }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="form-group">
+    <div class= "col-sm-2 "></div>
+   <div style ="color:red;">
+      <%= resource.errors.full_messages.collect(&:humanize).join(", ") %>
+    </div>
+  </div>
   <%= f.hidden_field :reset_password_token %>
   <div class="form-group text-center">
     <label for="inputpassword" class="col-sm-2 control-label">Password</label>

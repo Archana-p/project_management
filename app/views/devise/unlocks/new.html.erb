@@ -1,7 +1,12 @@
 <h2>Resend unlock instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="form-group">
+    <div class= "col-sm-2 "></div>
+   <div style ="color:red;">
+      <%= resource.errors.full_messages.collect(&:humanize).join(", ") %>
+    </div>
+  </div>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
