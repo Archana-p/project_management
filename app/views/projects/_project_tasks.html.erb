@@ -1,12 +1,12 @@
 <div class ="container">
   <h4>Task</h4>
 
-  <div class="row">
+  <div class="row" style ="float:right;">
     <%= form_tag project_path(@project), :method => 'get' do %>
-      <div class="form-group   col-xs-2">
+      <div class="form-group   col-xs-4 ">
         <%= text_field_tag :title, params[:title],:placeholder=>"Enter Task title" %>
       </div>
-      <div class="form-group   col-xs-2">
+      <div class="form-group   col-xs-4">
         <%= select_tag :status, options_for_select([['Not Started','not_started'],['Started','started'],['Done','done']]),prompt: "Not Selected" , :class =>"form-control" %>
       </div>
       <%= submit_tag "Search", :class => "btn btn-default"%>

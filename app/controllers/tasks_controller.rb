@@ -20,7 +20,7 @@ class TasksController < ApplicationController
 		else
 			flash.alert =  @task.errors.full_messages.collect(&:humanize).join(", ") 
 			@team_members =  @project.users
-		  redirect_to project_path(@project)
+		  render('new')
 	
 		end
 	end
