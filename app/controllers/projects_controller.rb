@@ -17,20 +17,23 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    params[:project][:user_ids] << params[:project_admin]
     @project = Project.new(params[:project])
     @project.admin_id = params[:project_admin]
     @team_members=  @project.users
 
     if @project.save 
+
         @team_members.each do |team_member|
           UserMailer.project_creation(team_member,@project).deliver
-
         end
-      
        respond_to do |format|
+         
           format.html {
+
              redirect_to projects_path , :notice => "Save successfully"
            }
+
 
            format.js{
             render json: { success: true,message: "Saved successfully"}

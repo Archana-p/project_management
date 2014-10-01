@@ -1,5 +1,5 @@
 <div class = "task_error_message"></div>
-<%= nested_form_for @project ,html: { class: "form-horizontal  edit_project" ,:multipart => true} do |f|%>
+<%= nested_form_for @project ,html: { class: "form-horizontal #{@project.new_record? ? 'new_project' : 'edit_project'} " ,:multipart => true} do |f|%>
   <div class="form-group text-center">
     <label for="inputtitle" class="col-sm-2 control-label">Title</label>
     <div class="col-sm-6">

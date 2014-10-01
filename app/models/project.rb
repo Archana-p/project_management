@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
 
 
 	def self.search(search,current_user)
-		if search
+		if search.present?
 			current_user.projects.where('title LIKE ?', "%#{search}%")
 			#find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
 		else

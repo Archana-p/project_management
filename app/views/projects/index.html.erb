@@ -23,7 +23,8 @@
     <%= submit_tag "Search", :name => nil ,:class => "btn btn-default"%>
   <% end %>
 
-  <% @projects.each do |project| %>
+  <% @projects.each do |project|  %>
+   
     <div class="panel panel-default">
       <div class="panel-heading">  
         <%=  link_to project.title ,project_path(project)%>

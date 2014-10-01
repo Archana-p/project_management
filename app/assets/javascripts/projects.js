@@ -23,8 +23,8 @@ $(document).ready(function(){
     e.preventDefault();
     $.ajax({
       type : "post" ,
-      url : $("#new_project").attr("action"),
-      data : $("#new_project").serialize(),
+      url : $(".new_project").attr("action"),
+      data : $(".new_project").serialize(),
       dataType : "json"
     }).done(function( response ) {
       if(response.success == true)
@@ -80,7 +80,7 @@ $(document).ready(function(){
         $("#project_model").modal("show")
         $("#project_model").html(response.partial_string);
         $('.chosen-select').chosen({ width: '200px'});
-        $("#Update_project").click(function(e){
+        $("#Update_project").unbind.click(function(e){
           e.preventDefault();
           $.ajax({
             type :"post",
