@@ -1,5 +1,6 @@
 ProjectManagement::Application.routes.draw do
   devise_for :users
+
   resources  :projects do
     collection do
       get "edit_action"
@@ -16,7 +17,11 @@ ProjectManagement::Application.routes.draw do
    get "tasks/mytasks"
  #match "/tasks/mytask" => "tasks#mytask"  ,:as => "mytask"
  get "homes/test_ajax"
-
+ #get 'auth/:provider/callback', to: 'sessions#create'
+ get 'auth/failure', to: redirect('/')
+ get 'signout', to: 'sessions#destroy', as: 'signout'
+ get '/auth/:provider/callback' => 'authentications#create'
+ resources :authentications
  resources  :homes
 
   # The priority is based upon order of creation:

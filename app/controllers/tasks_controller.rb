@@ -14,7 +14,7 @@ class TasksController < ApplicationController
 		@task = @project.tasks.new(params[:task])
 
 		if @task.save 
-				UserMailer.task_creation(@task.task_owner,@task).deliver
+				UserMailer.delay.task_creation(@task.task_owner,@task)
 			  redirect_to project_path(@project) ,:notice => "Saved successfully"
 		
 		else
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
 		task_owner=  @task.task_owner
 		title = @task.title
 		if @task.destroy 
-		  UserMailer.task_deletion(task_owner.email,title).deliver
+		  UserMailer.delay.task_deletion(task_owner.email,title)
 			
 			redirect_to project_path(@project) , :notice => "Destroy successfully"
 		end

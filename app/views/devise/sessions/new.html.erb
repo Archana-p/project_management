@@ -32,8 +32,15 @@
    		<%= f.submit "Log in" , class: "btn btn-default" %>
    	</div>
   </div>
+  
 <% end %>
-
+ <div class="form-group ">
+    <div class="col-sm-2 "></div>
+    <div class="col-sm-6">
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></br>
+      <%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
+    <div>
+  </div>
 <div class="form-group ">
   <div class="col-sm-2 "></div>
   <div class="col-sm-6">

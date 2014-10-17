@@ -36,10 +36,11 @@
             </tr>
         </thead>
         <%# if @tasks.present?%>
+        <tbody>
         <% @tasks.each  do |task| %>
 
-            <tbody>
-                <tr>
+         
+                <tr class=<%= cycle('odd','even') %> >
                     <td>
                         <%= link_to task.title , project_task_path(task.project_id , task)%> 
                     </td>
@@ -51,15 +52,23 @@
                     </td>
 
                     <td><%=task.task_owner.name if task.task_owner.present? %></td>
-                    <td><%= task.project.title%></td>
+                    <td><%= task.project.try(:title)%></td>
                     <td> <%= link_to "<span class='glyphicon glyphicon-remove btn btn-danger btn-xs'></span>".html_safe , project_task_path(task.project_id,task.id) ,:method => "delete"%> 
 
                         <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe , edit_project_task_path(task.project_id,task.id) %>
                     </td>
                 </tr>
-            </tbody>
         <% end %>
+        </tbody>
     </table>
-
+    <ul>
+      <% 4.times do %>
+        <li class=<%= cycle('bar','foo') %> > FOO </li>
+      <%end%>
+    </ul>    
 </div>
-    <br />
+<br />
+
+
+
+

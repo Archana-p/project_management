@@ -24,9 +24,10 @@ class ProjectsController < ApplicationController
 
     if @project.save 
 
-        @team_members.each do |team_member|
-          UserMailer.project_creation(team_member,@project).deliver
-        end
+        #@team_members.each do |team_member|
+          #UserMailer.project_creation(team_member,@project).deliver
+           EmailNotifyWorker.perform_async(project_id , user_ids)
+        #end
        respond_to do |format|
          
           format.html {
@@ -55,7 +56,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])  #show the project
-    @team_members=  @project.users.collect(&:name).join(", ")
+    @team_members=  @project.users
     @users = User.all
 
     #binding.pry
@@ -77,9 +78,9 @@ class ProjectsController < ApplicationController
     title = @project.title
 
     if @project.destroy
-     team_members.each do |team_member|
-        UserMailer.project_deletion(team_member,title).deliver
-      end
+     #team_members.each do |team_member|
+         UserMailer.delay.project_deletion(team_member,title)
+      #end
      
       redirect_to projects_path ,:notice => "Destroy successfully"#redirect to show page ifproject delete 
     end

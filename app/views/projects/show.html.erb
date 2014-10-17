@@ -11,9 +11,10 @@
 <div class = "container">
   <div class="panel panel-default">
     <div class="panel-heading">  <%= @project.title%>   
-      <div class = "text-right">
-        Project Owner: <%= @project.project_owner.name%>
-        <% if @project.project_owner.id == current_user.id%>
+      <div class = "text-right"> Project Owner:
+        <%= image_tag @project.project_owner.profile_pic , size:"50x50" ,style:"border-radius: 25px"%>
+        <%= @project.project_owner.name%>
+         <% if @project.project_owner.id == current_user.id%>
           <div class="btn-group btn-group-sm" >
             <button type="button" class="btn btn-default" id = "edit_project" data-id = <%=@project.id%>> Edit
               <%#= link_to "Edit"  , edit_project_path(@project)%></button>
@@ -31,7 +32,16 @@
     <div class="panel-body">
       <%= @project.description %>
       <div class="panel-body">
-        Project Member: <%= @team_members%>
+        <table class="">
+          Project Member: 
+          <% @team_members.each do|team_member|%>
+            <td class="col-xs-6">
+              <%= image_tag team_member.profile_pic , size:"50x50",style:"border-radius: 25px"%>
+              <%=team_member.name%>
+             
+             </td>
+          <%end%>
+        </table>
       </div>
     </div>  
   </div>  

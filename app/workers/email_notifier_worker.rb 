@@ -1,0 +1,14 @@
+class EmailNotifyWorker
+  include Sidekiq::Worker
+  def perform(project_id , user_ids)
+  	project = Project.find(project_id)
+  	task = Task.find(task_id)
+  	team_members = project.users.where(id: user_ids)
+  	 team_members.each do |team_member|
+  	 	 UserMailer.project_creation(team_member,project).deliver!
+
+  	 end
+
+    # do something
+  end
+end

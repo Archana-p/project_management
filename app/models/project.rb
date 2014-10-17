@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
 
 	has_and_belongs_to_many :users
 	belongs_to :project_owner ,:class_name => 'User' ,:foreign_key => "admin_id"
-	has_many :tasks
+	has_many :tasks , :dependent => :destroy
 
 
 	def self.search(search,current_user)

@@ -2,7 +2,7 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: { method: :put ,class: "form-horizontal"}) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: { method: :put ,class: "form-horizontal" , :multipart => true}) do |f| %>
   <div class="form-group">
     <div class= "col-sm-2 "></div>
    <div style ="color:red;">
@@ -13,6 +13,16 @@
     <label for="inputname" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-6">
      <%= f.text_field :name  , id:"inputname"%>
+    </div>
+  </div>
+      
+  <div class="form-group ">
+    <label for="inputname" class="col-sm-2 control-label">Select Pic</label>
+    <div class="col-sm-6">
+      <%if current_user.profile_pic_url.to_s.present? %>
+          <%= image_tag current_user.profile_pic_url.to_s ,size: "50x50"%>
+      <%end%></br></br>
+      <%= f.file_field :profile_pic , id:"inputimage"%>
     </div>
   </div>
   <div class="form-group ">
