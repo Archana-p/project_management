@@ -39,7 +39,7 @@
         </li>
       </ul>
       <div class = "text-right "style = "padding-top: 16px;display: inline;float: right;" id ="show-msg">
-        <%= image_tag current_user.profile_pic_url.to_s ,size: "50x50" unless present?%>
+        <%= image_tag current_user.profile_pic_url.to_s ,size: "50x50" %>
         <img class = "img" src = <%=current_user.image%>>
         <%= current_user.name %> <%= link_to "<span class='glyphicon glyphicon-cog' data-toggle='tooltip' data-placement='left' title='Edit Profile'></span>".html_safe ,edit_user_registration_path  %>
       </div>

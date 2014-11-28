@@ -38,9 +38,7 @@
         <%# if @tasks.present?%>
         <tbody>
         <% @tasks.each  do |task| %>
-
-         
-                <tr class=<%= cycle('odd','even') %> >
+                    <tr>
                     <td>
                         <%= link_to task.title , project_task_path(task.project_id , task)%> 
                     </td>
@@ -60,12 +58,7 @@
                 </tr>
         <% end %>
         </tbody>
-    </table>
-    <ul>
-      <% 4.times do %>
-        <li class=<%= cycle('bar','foo') %> > FOO </li>
-      <%end%>
-    </ul>    
+    </table>   
 </div>
 <br />
 

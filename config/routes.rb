@@ -18,6 +18,7 @@ ProjectManagement::Application.routes.draw do
  #match "/tasks/mytask" => "tasks#mytask"  ,:as => "mytask"
  get "homes/test_ajax"
  #get 'auth/:provider/callback', to: 'sessions#create'
+ post "/payload" => "homes#payload"
  get 'auth/failure', to: redirect('/')
  get 'signout', to: 'sessions#destroy', as: 'signout'
  get '/auth/:provider/callback' => 'authentications#create'

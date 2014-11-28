@@ -7,8 +7,7 @@ class ProjectsController < ApplicationController
     #show the list of projects 
     @project = Project.new
     @users = User.all
-    @projects = Project.search(params[:search],current_user)
-
+    @projects = Project.search(params[:search],current_user).order("title").page(params[:page]).per(1)
   end
 
   def new
@@ -77,13 +76,15 @@ class ProjectsController < ApplicationController
     team_members=  @project.users.collect(&:email)
     title = @project.title
 
-    if @project.destroy
-     #team_members.each do |team_member|
-         UserMailer.delay.project_deletion(team_member,title)
-      #end
-     
+     @project.destroy
+=begin
+        team_members.each do |team_member|
+                 UserMailer.delay.project_deletion(team_member,title)
+              end
+=end
+
       redirect_to projects_path ,:notice => "Destroy successfully"#redirect to show page ifproject delete 
-    end
+      
   end 
 
   def edit

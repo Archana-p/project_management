@@ -10,4 +10,11 @@ class HomesController < ApplicationController
   	end 
 
   end
+
+  def payload
+  	puts params
+  	respond_to do |format|
+      format.json { head :ok }
+    end
+  end 
 end

@@ -36,7 +36,7 @@
           Project Member: 
           <% @team_members.each do|team_member|%>
             <td class="col-xs-6">
-              <%= image_tag team_member.profile_pic , size:"50x50",style:"border-radius: 25px"%>
+              <%= image_tag team_member.profile_pic , size:"50x50",style:"border-radius: 25px" ,alt: "<span class='glyphicon glyphicon-globe'>".html_safe%>
               <%=team_member.name%>
              
              </td>
