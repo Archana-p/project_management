@@ -29,7 +29,6 @@ class TasksController < ApplicationController
 	def new
 		@project = Project.find(params[:project_id])
 		@task = Task.new 
-		
 		@team_members =  @project.users
 	
 	end
@@ -61,7 +60,6 @@ class TasksController < ApplicationController
 		@tasks  = Task.search_mytask(params,current_user) || current_user.tasks 
 		respond_to do |format|
 		format.html
-		
 		format.csv { send_data Task.to_csv(@tasks), :filename => '<file_name>.csv' }
 		end
 	end 
