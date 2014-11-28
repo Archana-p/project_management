@@ -29,9 +29,9 @@ class TasksController < ApplicationController
 	def new
 		@project = Project.find(params[:project_id])
 		@task = Task.new 
-		#binding.pry
+		
 		@team_members =  @project.users
-		#@file = @task.attachments.build
+	
 	end
 
 	def destroy
@@ -61,7 +61,7 @@ class TasksController < ApplicationController
 		@tasks  = Task.search_mytask(params,current_user) || current_user.tasks 
 		respond_to do |format|
 		format.html
-		#format.csv { send_data Task.to_csv(@tasks)}
+		
 		format.csv { send_data Task.to_csv(@tasks), :filename => '<file_name>.csv' }
 		end
 	end 
