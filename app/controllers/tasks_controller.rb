@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 		@project = Project.find(params[:project_id])
 		#binding.pry
 		@task = @project.tasks.new(params[:task])
+		#create task 
 
 		if @task.save 
 				UserMailer.delay.task_creation(@task.task_owner,@task)
