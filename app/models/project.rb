@@ -22,13 +22,13 @@ class Project < ActiveRecord::Base
 
   def task_count(status)
      if status.present?
-			count_tasks = tasks.where("status = ?", status).count()
+			count_tasks = tasks.where("status = ?", status).count()#count the task
 		end
   end
 
 	def search_task(params)
 	  if params[:title].present?
-			project_tasks = tasks.where('title LIKE ?', "%#{params[:title]}%")
+			project_tasks = tasks.where('title LIKE ?', "%#{params[:title]}%")#serch the prpject task
 		end
 
 		if params[:status].present? && project_tasks.present?
